@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		#informacion{
+			border:1px solid #ddd;
+			margin: 0 auto;
+			padding: 10px 0 10px;
+			text-align: center;
+		}
+		#informacion h4{
+			margin-bottom: 0;
+		}
+		#nombre{
+			margin: 10px 0 10px;
+		}
+	</style>
+	<script type="text/javascript">
+	
+		fetch('http://www.raydelto.org/json.php')
+		.then((solicitud => {
+			return solicitud.json();
+		})).then(solicitud =>{
+			document.getElementById('nombre').value = solicitud.name;
+			document.getElementById('apellido').value = solicitud.lastName;
+		})
+	</script>
+
+	
+	<title>Consumiendo Web Service</title>
+</head>
+<body>
+	<div id="informacion">
+		<h4>Nombre</h4>
+		<input type="text" name="" class="nombre" id="nombre"  value="Cargando..." readonly="readonly">
+		<h4>Apellido</h4>
+		<input type="text" name="" id="apellido" value="Cargando..." readonly="readonly">
+	</div>	
+</body>
+</html>
